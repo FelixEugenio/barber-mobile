@@ -1,12 +1,14 @@
-import { View, Text } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
+import Header from "../../../components/Header";
 export default function Home() {
     return (
         <SafeAreaView>
-           <View>
+            <ScrollView>
+                <Header />
             <Text>Home</Text>
-        </View>
+        </ScrollView>
         </SafeAreaView>
         
     );

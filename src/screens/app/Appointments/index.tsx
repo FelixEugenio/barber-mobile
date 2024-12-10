@@ -1,12 +1,12 @@
-import { View, Text } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 export default function Appointments() {
     return (
         <SafeAreaView>
-           <View>
+            <ScrollView>
             <Text>Appointments</Text>
-        </View>
+        </ScrollView>
         </SafeAreaView>
         
     );
