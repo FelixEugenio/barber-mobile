@@ -8,6 +8,7 @@ import Separator from "../../../components/Separator";
 import GoogleLogin from "../../../components/GoogleLogin";
 import { propStack } from "../../../utils";
 import { useNavigation } from "@react-navigation/native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 type Props = {
     navigation: any
@@ -18,11 +19,15 @@ export default function SignUp() {
     const onSignIn = () => {
         navigation.navigate('SignIn')
          }
+
+         const onBack = () => {
+            navigation.goBack()
+         }
     
     return (
-        <View style={{marginTop:40}}>
-            
-             <AuthHeader title="Sign Up"/>
+        <SafeAreaView>
+            <View>
+             <AuthHeader onBackPress={onBack} title="Sign Up"/>
              <Input placeholder="Entre com o seu nome"  label="Name"  />
              <Input placeholder="Entre com o seu email"  label="Email"  />
              <Input placeholder="**********"  label="Password" isPassword />
@@ -37,9 +42,9 @@ export default function SignUp() {
             <Text onPress={onSignIn} style={styles.footerLink}> Sign In</Text>
              </Text>
              </View>
-            
-
         </View>
+        </SafeAreaView>
+        
     );
 }
 

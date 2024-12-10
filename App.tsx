@@ -6,6 +6,7 @@ import SignIn from './src/screens/auth/SignIn';
 import {NavigationContainer} from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { colors } from './src/utils/colors';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -18,6 +19,7 @@ export default function App() {
   
   return (
     
+    <SafeAreaProvider>
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Splash" options={{headerShown: false}} component={Splash} />
@@ -25,6 +27,8 @@ export default function App() {
           <Stack.Screen name="SignIn" options={{headerShown: false}} component={SignIn} />
         </Stack.Navigator>
       </NavigationContainer>
+    </SafeAreaProvider>
+      
      
   );
 }
