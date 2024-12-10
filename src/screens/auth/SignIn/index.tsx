@@ -6,18 +6,19 @@ import AuthHeader from "../../../components/AuthHeader";
 import Input from "../../../components/Input";
 import Separator from "../../../components/Separator";
 import GoogleLogin from "../../../components/GoogleLogin";
+import { PropsWithChildren } from "react";
+import { propStack } from "../../../utils";
+import { useNavigation } from "@react-navigation/native";
 
-type Props = {
-    navigation: any
-}
-export default function SignIn({navigation}: Props) {
+export default function SignIn() {
+    const navigation = useNavigation<propStack>();
 
     const onSignUp = () => {
-        navigation.navigate('SignIn')
+        navigation.navigate('SignUp')
          }
     
     return (
-        <View>
+        <View style={{marginTop:40}}>
             
              <AuthHeader title="Sign In"/>
              
@@ -26,7 +27,7 @@ export default function SignIn({navigation}: Props) {
              
              
              <View style={{marginHorizontal: 16, marginTop:20}}>
-             <Button  title="Sign In" />
+             <Button   title="Sign In" />
              <Separator text="ou Faça Login com" />
              <GoogleLogin />
              <Text style={styles.footerText}>

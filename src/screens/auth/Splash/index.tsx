@@ -2,8 +2,19 @@ import React from "react";
 import { View,Text,StatusBar,Image,StyleSheet, Pressable } from "react-native";
 import Button from "../../../components/Button";
 import { colors } from "../../../utils/colors";
+import { useNavigation } from "@react-navigation/native";
+import { propStack } from "../../../utils";
 
 export default function Splash() {
+    const navigation = useNavigation<propStack>();
+
+    const onSignUp = () => {
+        navigation.navigate('SignUp')
+    }
+
+    const onSignIn = () => {
+        navigation.navigate('SignIn')
+    }
     return (
         <View style={styles.container}>
             
@@ -11,9 +22,9 @@ export default function Splash() {
              <View style={styles.titleContainer}>
             <Text style={styles.title}>Barber App</Text><Text style={styles.innerTitle}>Faça já a sua </Text><Text style={styles.title}> Reserva agora</Text>
             </View>
-             <Button title="Sign Up" />
+             <Button onPress={onSignUp} title="Sign Up" />
 
-             <Pressable hitSlop={20}>
+             <Pressable hitSlop={20} onPress={onSignIn}>
                  <Text style={styles.footerText}>Sign In</Text>
              </Pressable>
         </View>
