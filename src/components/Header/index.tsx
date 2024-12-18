@@ -1,19 +1,18 @@
 import React, { useState } from 'react';
 import { Pressable, Text, View, Image } from 'react-native';
-import Input from '../Input';
+import Input, { InputProps } from '../Input';
 import { colors } from '../../utils/colors';
 import { StyleSheet } from 'react-native';
 
 type props = {
-    title: string,
-    onBackPress: () => void,
-    onLogout: () => void,
-    showLogout: boolean,
-    showSearch: boolean,
-    onSearch: (value: string) => void,
-    keyword: string,
-    showBack: boolean,
-    onChangeText?: (value: string) => void
+    title?: string,
+    onBackPress?: () => void,
+    onLogout?: () => void,
+    showLogout?: boolean,
+    showSearch?: boolean,
+    onSearch?: (value: string) => void,
+    keyword?: string,
+    showBack?: boolean,
 }
 
 const Header = ({ title, onBackPress, onLogout, showLogout, showSearch, onSearch, keyword, showBack }: props) => {
@@ -46,7 +45,7 @@ const Header = ({ title, onBackPress, onLogout, showLogout, showSearch, onSearch
             </View>
 
             {showSearchInput ? (
-                <Input onChangeText={onSearch} value={keyword} placeholder="Type your keyword..." />
+                <Input onChangeText={onSearch} value={keyword} placeholder="Procure um Serviço" />
             ) : null}
         </View>
     )

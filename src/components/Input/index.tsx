@@ -3,12 +3,14 @@ import { View,TextInput ,StyleSheet,Text,Pressable,Image} from "react-native"
 import { useState } from "react"
 import { colors } from "../../utils/colors"
 
-type Props = {
-    label: string
-    placeholder: string
+export type InputProps = {
+    label?: string
+    placeholder?: string
     isPassword?: boolean
+    onChangeText?: (value: string) => void
+    value?:string
 }
- function Input({ label, placeholder, isPassword }: Props) {
+ function Input({ label, placeholder, isPassword,onChangeText,value }: InputProps) {
     const [isPasswordVisible, setIsPasswordVisible] = useState(true);
 
     const onEyePress = () => {

@@ -6,8 +6,7 @@ export default function Home() {
     return (
         <SafeAreaView>
             <ScrollView>
-                <Header />
-            <Text>Home</Text>
+                <Header   showLogout showSearch title="Home"/>
         </ScrollView>
         </SafeAreaView>
         

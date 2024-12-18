@@ -22,10 +22,12 @@ export default function SignIn() {
     return (
         <SafeAreaView>
              <View>
+                
              <AuthHeader onBackPress={onBack} title="Sign In"/>
              
              <Input placeholder="Entre com o seu email"  label="Email"  />
              <Input placeholder="**********"  label="Password" isPassword />
+             
              
              <View style={{marginHorizontal: 16, marginTop:20}}>
              <Button   title="Sign In" />
