@@ -34,11 +34,7 @@ const Tabs = () => {
             icon = focused
               ? require('./src/assets/tabs/profile_active.png')
               : require('./src/assets/tabs/profile.png');
-          } else if (route.name === 'Serviços') {
-            icon = focused
-              ? require('./src/assets/tabs/bookmark_active.png')
-              : require('./src/assets/tabs/bookmark.png');
-          } 
+          }
 
           // Ajustando o tamanho do ícone com um valor fixo, como 30
           return <Image style={{ width: 30, height: 30 }} source={icon} />;
