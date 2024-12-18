@@ -5,6 +5,11 @@ import SignIn from './src/screens/auth/SignIn';
 import Home from './src/screens/app/Home';
 import Services from './src/screens/app/services';
 import Professional from './src/screens/app/Professional';
+import Appointments from './src/screens/app/Appointments';
+import MyListings from './src/screens/app/MyListings';
+import Settings from './src/screens/app/Settings';
+import CreateListing from './src/screens/app/CreateListing';
+import ProductDetails from './src/screens/app/ProductDetails';
 import Profile from './src/screens/app/Profile';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -13,6 +18,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Favorites from './src/screens/app/Favorites';
 import React from 'react';
+import ListItem from './src/components/ListItem';
 
 const isSignedIn = true;
 
@@ -40,18 +46,23 @@ const Tabs = () => {
               ? require('./src/assets/tabs/bookmark_active.png')
               : require('./src/assets/tabs/bookmark.png');
           } 
+          
 
           // Ajustando o tamanho do ícone com um valor fixo, como 30
           return <Image style={{ width: 30, height: 30 }} source={icon} />;
         },
         headerShown: false, // Esconde o cabeçalho
         tabBarShowLabel: false, // Não exibe o nome da aba
-        tabBarStyle: { borderColor: colors.lightgrey }, // Estilo da barra de navegação
+        tabBarStyle: {backgroundColor: colors.white, borderColor: colors.lightgrey }, // Estilo da barra de navegação
       })}
     >
-      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="Home" component={Home}  />
       <Tab.Screen name="Favoritos" component={Favorites} />
       <Tab.Screen name="Perfil" component={Profile} />
+      <Tab.Screen name="ProductDetails" component={ProductDetails} />
+      <Tab.Screen name="CreateListing" component={CreateListing} />
+      <Tab.Screen name="MyListings" component={MyListings} />
+      <Tab.Screen name="Settings" component={Settings} />
     </Tab.Navigator>
   );
 };
@@ -85,7 +96,7 @@ export default function App() {
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
   },

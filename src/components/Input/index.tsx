@@ -9,6 +9,9 @@ export type InputProps = {
     isPassword?: boolean
     onChangeText?: (value: string) => void
     value?:string
+    keyboardType?:string
+    type?:string
+    options?:any
 }
  function Input({ label, placeholder, isPassword,onChangeText,value }: InputProps) {
     const [isPasswordVisible, setIsPasswordVisible] = useState(true);
