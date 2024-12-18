@@ -17,6 +17,8 @@ const Home = () => {
     const [keyword, setKeyword] = useState<string>();
     const [filteredProducts, setFilteredProducts] = useState(products);
 
+    console.log(keyword)
+
     useEffect(() => {
         if (selectedCategory && !keyword) {
             const updatedProducts = products.filter((product) => product?.category === selectedCategory);

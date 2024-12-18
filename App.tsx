@@ -11,6 +11,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { colors } from './src/utils/colors';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Favorites from './src/screens/app/Favorites';
 import React from 'react';
 
 const isSignedIn = true;
@@ -34,7 +35,7 @@ const Tabs = () => {
             icon = focused
               ? require('./src/assets/tabs/profile_active.png')
               : require('./src/assets/tabs/profile.png');
-          } else if (route.name === 'Serviços') {
+          } else if (route.name === 'Favoritos') {
             icon = focused
               ? require('./src/assets/tabs/bookmark_active.png')
               : require('./src/assets/tabs/bookmark.png');
@@ -49,9 +50,8 @@ const Tabs = () => {
       })}
     >
       <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="Serviços" component={Services} />
+      <Tab.Screen name="Favoritos" component={Favorites} />
       <Tab.Screen name="Perfil" component={Profile} />
-      <Tab.Screen name="Configurações" component={Professional} />
     </Tab.Navigator>
   );
 };
