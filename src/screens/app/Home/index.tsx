@@ -89,7 +89,9 @@ const Home = () => {
     // Função para renderizar cada item de serviço
     const renderServiceItem = ({ item }: { item: Service }) => {
         const onServicePress = (service: Service) => {
-            navigation.navigate('Favorites', { service });
+            console.log('ID do serviço selecionado:', service.id); // Verifique o ID no console
+            // Passando apenas o id do serviço
+            navigation.navigate('Favorites', { serviceId: service.id });
         };
 
         return (

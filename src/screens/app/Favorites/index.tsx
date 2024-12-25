@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { FlatList, Text, ActivityIndicator, View, Image, StyleSheet } from 'react-native';
+import { FlatList, Text, ActivityIndicator, View, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { AuthContext } from '../../../contexts/AuthContext'; // Import AuthContext
 import { api } from '../../../services/api';
 import Header from '../../../components/Header';
+import { useNavigation, useRoute } from '@react-navigation/native';  // Import navigation and route hooks
 
 type Props = {
     item: any;
@@ -13,8 +14,13 @@ const Favorites = () => {
     const [professionals, setProfessionals] = useState<any[]>([]);  // State to store professionals
     const [loading, setLoading] = useState<boolean>(true);  // Loading state
     const [error, setError] = useState<string | null>(null);  // Error state
-
     const { user } = useContext(AuthContext);  // Get user info from context
+
+    const navigation = useNavigation();  // Navigation hook
+    const route = useRoute();  // Route hook to get parameters
+
+    // Get the serviceId passed from the Home screen
+    const { serviceId } = route.params as { serviceId: string };
 
     useEffect(() => {
         // Fetch professionals on component mount
@@ -41,15 +47,24 @@ const Favorites = () => {
         }
     }, [user.token]);  // Dependency array ensures this runs when the token changes
 
+    const handleProfessionalPress = (professionalId: string) => {
+        // Navigate to the Booking page with the necessary data
+        navigation.navigate('Booking', {
+            professionalId,   // Pass professional id
+            serviceId,        // Pass service id from the route params
+            userId: user.id   // Pass user id
+        });
+    };
+
     const renderItem = ({ item }: Props) => {
         return (
-            <View style={styles.itemContainer}>
+            <TouchableOpacity style={styles.itemContainer} onPress={() => handleProfessionalPress(item.id)}>
                 <Image source={{ uri: item.avatar }} style={styles.avatar} />
                 <View style={styles.textContainer}>
                     <Text style={styles.name}>{item.name}</Text>
                     <Text style={styles.specialty}>{item.specialty}</Text>
                 </View>
-            </View>
+            </TouchableOpacity>
         );
     };
 

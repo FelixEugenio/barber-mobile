@@ -13,6 +13,7 @@ export type propsNavigationStack = {
     ProductDetails: undefined,
     MyListings: undefined
     CreateListing: undefined
+    Booking:undefined
 
 } 
 
