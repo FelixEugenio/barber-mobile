@@ -2,6 +2,7 @@ import React from "react";
 import { Text,Pressable,TouchableOpacity } from "react-native";
 import { StyleSheet } from "react-native";
 import { colors } from "../../utils/colors";
+
 type Props = {
     title: string;
     onPress?: () => void

@@ -19,75 +19,20 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Favorites from './src/screens/app/Favorites';
 import React from 'react';
 import ListItem from './src/components/ListItem';
-
-const isSignedIn = true;
+import Routes from './src/routes';
+import { AuthProvider } from './src/contexts/AuthContext';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-const Tabs = () => {
-  return (
-    <Tab.Navigator
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused }) => {
-          let icon;
-
-          // Definindo o ícone de acordo com o nome da rota
-          if (route.name === 'Home') {
-            icon = focused
-              ? require('./src/assets/tabs/home_active.png')
-              : require('./src/assets/tabs/home.png');
-          } else if (route.name === 'Profile') {
-            icon = focused
-              ? require('./src/assets/tabs/profile_active.png')
-              : require('./src/assets/tabs/profile.png');
-          } else if (route.name === 'Favoritos') {
-            icon = focused
-              ? require('./src/assets/tabs/bookmark_active.png')
-              : require('./src/assets/tabs/bookmark.png');
-          } 
-          
-
-          // Ajustando o tamanho do ícone com um valor fixo, como 30
-          return <Image style={{ width: 30, height: 30 }} source={icon} />;
-        },
-        headerShown: false, // Esconde o cabeçalho
-        tabBarShowLabel: false, // Não exibe o nome da aba
-        tabBarStyle: {backgroundColor: colors.white, borderColor: colors.lightgrey }, // Estilo da barra de navegação
-      })}
-    >
-      <Tab.Screen name="Home" component={Home}  />
-      <Tab.Screen name="Favoritos" component={Favorites} />
-      <Tab.Screen name="Perfil" component={Profile} />
-      <Tab.Screen name="ProductDetails" component={ProductDetails} />
-      <Tab.Screen name="CreateListing" component={CreateListing} />
-      <Tab.Screen name="MyListings" component={MyListings} />
-      <Tab.Screen name="Settings" component={Settings} />
-    </Tab.Navigator>
-  );
-};
-
 export default function App() {
-  const theme = {
-    colors: {
-      background: colors.white, // Definindo a cor de fundo
-    },
-  };
 
   return (
     <SafeAreaProvider>
       <NavigationContainer>
-        <Stack.Navigator>
-          {isSignedIn ? (
-            <Stack.Screen name="Tabs" options={{ headerShown: false }} component={Tabs} />
-          ) : (
-            <>
-              <Stack.Screen name="Splash" options={{ headerShown: false }} component={Splash} />
-              <Stack.Screen name="SignUp" options={{ headerShown: false }} component={SignUp} />
-              <Stack.Screen name="SignIn" options={{ headerShown: false }} component={SignIn} />
-            </>
-          )}
-        </Stack.Navigator>
+        <AuthProvider>
+        <Routes />
+        </AuthProvider>
       </NavigationContainer>
     </SafeAreaProvider>
   );

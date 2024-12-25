@@ -10,11 +10,11 @@ import { propStack } from '../../../utils';
 
 const Profile = () => {
     const navigation = useNavigation<propStack>();
-    const num = 10; // Número de listagens, pode vir de uma API ou estado
+    const num = 10; 
 
     const onLogout = () => {
         console.log('Log out clicked');
-        // Aqui você pode chamar a função de logout, limpar dados ou redirecionar.
+        
     };
 
     const onSettingsPress = () => {
@@ -59,14 +59,14 @@ export default React.memo(Profile);
 
 const styles = StyleSheet.create({
     safeArea: {
-        flex: 1, // Garante que o SafeAreaView ocupe a tela inteira
+        flex: 1, 
     },
     container: {
         padding: 24,
-        flex: 1, // Garante que o container ocupe o espaço disponível
+        flex: 1, 
     },
     content: {
-        flex: 1, // Flex 1 para que o conteúdo ocupe o máximo possível
+        flex: 1, 
     },
     name: {
         fontSize: 20,
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
         marginBottom: 16,
     },
     addListingButton: {
-        marginTop: 16, // Um pequeno espaçamento para o botão
-        flex: 0, // Para garantir que o botão tenha tamanho adequado
+        marginTop: 16,
+        flex: 0, 
     }
 });
