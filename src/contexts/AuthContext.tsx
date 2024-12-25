@@ -1,6 +1,7 @@
 import React,{useState,createContext, ReactNode,useEffect} from "react";
 import { api } from "../services/api";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useNavigation } from "@react-navigation/native";
 
 type AuthContextData = {
     user: UserProps;
@@ -14,7 +15,7 @@ type SignUpProps = {
     name:string;
     email:string;
     password:string
-    phone:string
+    phoneNumber:string
 }
 type UserProps = {
     id:string;
@@ -43,6 +44,7 @@ export function AuthProvider({children}:AuthProviderProps){
     });
 
     const isSignedIn = !!user.name;
+    const navigation = useNavigation();
 
     useEffect(()=>{
         async function getUser(){
@@ -113,9 +115,27 @@ export function AuthProvider({children}:AuthProviderProps){
         })
     }
 
+    async function signUp({email,name,password,phoneNumber}:SignUpProps){
+        try{
+            const response = await api.post('/users',{
+                email,
+                name,
+                password,
+                phoneNumber
+            });
+            
+            console.log(response.data)
+
+            navigation.navigate('SignIn')
+        }catch(err){
+            console.log(err)
+        }
+
+    }
+
 
     return(
-        <AuthContext.Provider value={{user,isSignedIn,signIn,signOut}} >
+        <AuthContext.Provider value={{user,isSignedIn,signIn,signOut,signUp}} >
          {children}
         </AuthContext.Provider>
     )
