@@ -106,9 +106,23 @@ const Home = () => {
         );
     };
 
+    // Função para navegação até a página de "Meus Agendamentos"
+    const goToMyAppointments = () => {
+        navigation.navigate('MyAppointments'); // Navega para a tela de Meus Agendamentos
+    };
+
     return (
         <SafeAreaView>
-            <Header showLogout  keyword={keyword} title="Procura oque Precisas" />
+            <Header 
+                showLogout 
+                keyword={keyword} 
+                title="Procura oque Precisas" 
+            />
+
+            {/* Botão para "Meus Agendamentos" */}
+            <TouchableOpacity style={styles.appointmentsButton} onPress={goToMyAppointments}>
+                <Text style={styles.appointmentsButtonText}>Meus Agendamentos</Text>
+            </TouchableOpacity>
 
             {/* Renderizando categorias (opcional, se necessário) */}
             <FlatList
@@ -209,5 +223,18 @@ export const styles = StyleSheet.create({
     errorText: {
         color: '#721c24',
         fontWeight: 'bold',
+    },
+    appointmentsButton: {
+        marginVertical: 16,
+        padding: 12,
+        backgroundColor: '#4caf50',
+        alignItems: 'center',
+        borderRadius: 8,
+        marginHorizontal: 16,
+    },
+    appointmentsButtonText: {
+        color: '#fff',
+        fontWeight: 'bold',
+        fontSize: 16,
     }
 });
