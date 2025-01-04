@@ -20,7 +20,7 @@ type Service = {
 
 const Home = () => {
     const navigation = useNavigation<propStack>(); // Tipagem da navegação
-    const { user } = useContext(AuthContext); // Consumindo o usuário e o token do contexto
+    const { user,signOut } = useContext(AuthContext); // Consumindo o usuário e o token do contexto
 
     // Estado de seleção de categoria e busca
     const [selectedCategory, setSelectedCategory] = useState<number | undefined>(undefined);
@@ -32,6 +32,10 @@ const Home = () => {
     const [error, setError] = useState<string | null>(null); // Para armazenar erros
     const [numColumns, setNumColumns] = useState(2); // Estado para controlar o número de colunas dinamicamente
 
+    async function handleLogout() {
+        // Limpa o token do contexto
+        await signOut();
+    }
     // Função para buscar os serviços da API
     const fetchServices = async () => {
         try {
@@ -121,6 +125,7 @@ const Home = () => {
     return (
         <SafeAreaView>
             <Header 
+              onLogout={handleLogout}
                 showLogout 
                 keyword={keyword} 
                 title="Procura oque Precisas" 
