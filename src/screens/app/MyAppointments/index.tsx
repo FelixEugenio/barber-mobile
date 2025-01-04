@@ -46,8 +46,8 @@ const MyAppointments = () => {
     const handleCancelAppointment = async (appointmentId: string) => {
         // Ask for confirmation before canceling the appointment
         Alert.alert(
-            'Confirm Cancellation',
-            'Are you sure you want to cancel this appointment?',
+            'Confirmar Cancelamento',
+            'Tem certeza de que deseja cancelar o agendamento?',
             [
                 {
                     text: 'Cancel',
@@ -57,15 +57,15 @@ const MyAppointments = () => {
                     text: 'Confirm',
                     onPress: async () => {
                         try {
-                            await api.delete(`/appointments/${appointmentId}`, {
+                            await api.get(`/appointment/cancel/${appointmentId}`, {
                                 headers: {
                                     Authorization: `Bearer ${user.token}`,  // Pass the token in the Authorization header
                                 },
                             });
                             setAppointments(appointments.filter(item => item.id !== appointmentId));  // Remove the canceled appointment from the list
-                            Alert.alert('Success', 'Your appointment has been canceled');
+                            Alert.alert('Success', 'Teu agendamento foi cancelado com sucesso.');
                         } catch (err) {
-                            Alert.alert('Error', 'Failed to cancel the appointment');
+                            Alert.alert('Error', 'Falha ao cancelar o agendamento.');
                         }
                     },
                 },
@@ -88,7 +88,7 @@ const MyAppointments = () => {
                     style={styles.cancelButton}
                     onPress={() => handleCancelAppointment(item.id)}
                 >
-                    <Text style={styles.cancelButtonText}>Cancel</Text>
+                    <Text style={styles.cancelButtonText}>Cancelar</Text>
                 </TouchableOpacity>
             </View>
         );
@@ -97,7 +97,7 @@ const MyAppointments = () => {
     if (loading) {
         return (
             <SafeAreaView>
-                <Header title="My Appointments" />
+                <Header title="Meus Agendamentos" />
                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                     <ActivityIndicator size="large" color="#0000ff" />
                     <Text>Loading...</Text>
@@ -109,7 +109,7 @@ const MyAppointments = () => {
     if (error) {
         return (
             <SafeAreaView>
-                <Header title="My Appointments" />
+                <Header title="Meus Agendamentos" />
                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                     <Text>{error}</Text>
                 </View>
@@ -119,7 +119,7 @@ const MyAppointments = () => {
 
     return (
         <SafeAreaView>
-            <Header title="My Appointments" />
+            <Header title="Meus Agendamentos" />
             <FlatList
                 data={appointments}
                 renderItem={renderItem}
