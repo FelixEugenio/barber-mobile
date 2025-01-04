@@ -15,7 +15,6 @@ export type propsNavigationStack = {
     CreateListing: undefined
     Booking:undefined
     MyAppointments: undefined
-
 } 
 
 export type propStack = NativeStackNavigationProp<propsNavigationStack>
