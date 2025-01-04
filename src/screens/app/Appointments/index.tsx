@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { FlatList, View, Text, TouchableOpacity, StyleSheet, Image, Alert } from 'react-native';
+import { FlatList, View, Text, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Header from '../../../components/Header';
 import { useNavigation, useRoute } from '@react-navigation/native';
@@ -24,11 +24,6 @@ const Booking = () => {
 
   const currentDate = moment().format('YYYY-MM-DD'); // Obtém a data de hoje
 
-  // Log para depuração
-  console.log('Received professionalId:', professionalId);
-  console.log('Received serviceId:', serviceId);
-  console.log('Received userId:', userId);
-
   // Lógica para carregar horários disponíveis
   useEffect(() => {
     if (selectedDate) {
@@ -42,10 +37,6 @@ const Booking = () => {
 
   // Função para fazer o agendamento
   const handleBooking = async () => {
-    console.log('Selected Date:', selectedDate);
-    console.log('Selected Time:', selectedTime);
-
-    // Verifica se o usuário está logado
     if (!user) {
       Alert.alert('Error', 'Você precisa estar logado para agendar um serviço.');
       navigation.navigate('SignIn');
@@ -57,11 +48,10 @@ const Booking = () => {
       return;
     }
 
-    // Prepara os dados do agendamento
     const appointmentData = {
       userId: userId || user.id, // Usamos o userId passado ou o id do contexto
       professionalId: professionalId, // ID do profissional
-      serviceId: serviceId,          // ID do serviço
+      serviceId: serviceId, // ID do serviço
       scheduleAt: `${selectedDate}T${selectedTime}:00.000Z`, // Data e hora do agendamento
     };
 
@@ -99,7 +89,6 @@ const Booking = () => {
           }}
           onDayPress={(day) => {
             setSelectedDate(day.dateString);
-            console.log('Date Selected:', day.dateString); // Log da data selecionada
           }}
         />
       </View>
@@ -117,11 +106,11 @@ const Booking = () => {
               <TouchableOpacity
                 onPress={() => {
                   setSelectedTime(item);
-                  console.log('Time Selected:', item); // Log do horário selecionado
                 }}
                 style={[
                   styles.timeSlot,
                   isTimePassed(item) ? styles.timeSlotDisabled : null, // Desabilita horários passados
+                  item === selectedTime ? styles.timeSlotSelected : null, // Destaca o horário selecionado
                 ]}
                 disabled={isTimePassed(item)} // Desabilita a interação com horários passados
               >
@@ -171,6 +160,11 @@ const styles = StyleSheet.create({
   },
   timeSlotDisabled: {
     backgroundColor: '#e0e0e0',
+  },
+  timeSlotSelected: {
+    backgroundColor: '#4caf50', // Cor de fundo para o horário selecionado
+    borderColor: '#388e3c', // Cor da borda para o item selecionado
+    borderWidth: 2, // Borda para destacar o horário
   },
   timeText: {
     fontSize: 16,
