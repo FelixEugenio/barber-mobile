@@ -14,6 +14,7 @@ export type propsNavigationStack = {
     MyListings: undefined
     CreateListing: undefined
     Booking:undefined
+    MyAppointments: undefined
 
 } 
 
