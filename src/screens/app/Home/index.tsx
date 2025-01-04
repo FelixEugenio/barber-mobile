@@ -108,7 +108,7 @@ const Home = () => {
 
     return (
         <SafeAreaView>
-            <Header showSearch onSearch={setKeyword} keyword={keyword} title="Procura oque Precisas" />
+            <Header showLogout  keyword={keyword} title="Procura oque Precisas" />
 
             {/* Renderizando categorias (opcional, se necessário) */}
             <FlatList
