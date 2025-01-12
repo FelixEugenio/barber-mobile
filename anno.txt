@@ -1,3 +1,4 @@
 barber App
 criar agendamento 
 cancelar agendamento
+criar um colaborador 
