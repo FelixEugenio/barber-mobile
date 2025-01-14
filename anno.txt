@@ -4,3 +4,15 @@ criar um colaborador
 criar um serviçcoagendamento 
 cancelar 
 barberbarberbarberbarberbarberbarberbarberbarber
+barber App
+criar agendamento
+criar um colaborador 
+criar um serviçcoagendamento 
+cancelar 
+barberbarberbarberbarberbarberbarberbarberbarber
+barber App
+criar agendamento
+criar um colaborador 
+criar um serviçcoagendamento 
+cancelar 
+barberbarberbarberbarberbarberbarberbarberbarber
