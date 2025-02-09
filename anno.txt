@@ -12,7 +12,6 @@ cancelar
 barberbarberbarberbarberbarberbarberbarberbarber
 barber App
 criar agendamento
-vvvvvv
 criar um serviçcoagendamento 
 cancelar 
 barberbarberbarberbarberbarberbarberbarberbarber
