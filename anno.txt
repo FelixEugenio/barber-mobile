@@ -18,6 +18,5 @@ barberbarberbarberbarberbarberbarberbarberbarber
 barberbarberbarberbarberbarberbarberbarberbarber
 barber App
 criar agendamento
-criar um colaborador dfdfsdfds
-criar um serviçcoagendamento 
+oagendamento 
 cancelar 
