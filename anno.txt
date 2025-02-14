@@ -17,6 +17,5 @@ cancelar
 barberbarberbarberbarberbarberbarberbarberbarber
 barberbarberbarberbarberbarberbarberbarberbarber
 barber App
-criar agendamento
-oagendamento 
+criar agendament
 cancelar 
