@@ -9,8 +9,6 @@ criar agendamento
 criar um colaborador 
 criar um serviçcoagendamento 
 cancelar 
-barberbarberbarberbarberbarberbarberbarberbarber
-
 criar um serviçcoagendamento 
 cancelar 
 barberbarberbarberbarberbarberbarberbarberbarber
